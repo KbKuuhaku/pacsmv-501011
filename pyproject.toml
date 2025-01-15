@@ -1,0 +1,27 @@
+[project]
+name = "pacsmv-501011"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dacite>=1.8.1",
+    "ipykernel>=6.29.5",
+    "matplotlib>=3.10.0",
+    "numpy>=2.2.1",
+    "pillow>=11.1.0",
+    "pyqt5>=5.15.11",
+    "rich>=13.9.4",
+    "scikit-learn>=1.6.1",
+    "tensorboard>=2.18.0",
+    "torch==2.4.0",
+    "tqdm>=4.67.1",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+hw1 = "pacsmv_501011.hw1.main:main"
+

@@ -1,0 +1,22 @@
+n_epoch = 20
+seed = 42
+batch_size = 64
+
+[data]
+root = "data/fashion-mnist"
+# root = "data/mnist"
+train_images = "train-images-idx3-ubyte"
+train_labels = "train-labels-idx1-ubyte"
+test_images = "t10k-images-idx3-ubyte"
+test_labels = "t10k-labels-idx1-ubyte"
+
+[optim]
+name = "sgd"
+lr = 1e-1
+beta1 = 0.9
+beta2 = 0.999
+
+[model]
+name = "mlp"
+hidden1 = 256
+hidden2 = 128
