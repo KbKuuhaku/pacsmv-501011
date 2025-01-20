@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "click>=8.1.8",
     "dacite>=1.8.1",
     "ipykernel>=6.29.5",
     "matplotlib>=3.10.0",
@@ -14,8 +15,11 @@ dependencies = [
     "rich>=13.9.4",
     "scikit-learn>=1.6.1",
     "tensorboard>=2.18.0",
-    "torch==2.4.0",
+    "torch==2.4.1",
+    "torchvision>=0.19.1",
     "tqdm>=4.67.1",
+    "transformers>=4.48.0",
+    "ultralytics>=8.3.23",
 ]
 
 [build-system]
@@ -24,4 +28,5 @@ build-backend = "setuptools.build_meta"
 
 [project.scripts]
 hw1 = "pacsmv_501011.hw1.main:main"
+hw2 = "pacsmv_501011.hw2.main:cli"
 

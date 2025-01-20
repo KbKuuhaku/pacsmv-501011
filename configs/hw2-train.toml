@@ -1,0 +1,16 @@
+seed = 42
+
+[train]
+pretrained_weight = "yolo11n.pt"
+name = "uno-cards"
+resume = false
+batch_size = 64
+n_epoch = 10
+
+[hparams]
+dropout = 0.2
+patience = 5
+
+[data]
+data_root = "data/uno-cards"
+config = "data.yaml"

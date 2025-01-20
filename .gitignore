@@ -14,6 +14,7 @@ wheels/
 data/
 reports/
 runs/
+yolo-runs/
 sessions/
 .obsidian/
 
@@ -21,3 +22,5 @@ sessions/
 hello.py
 a.py
 pyrightconfig.json
+*.pt
+*.ttf
