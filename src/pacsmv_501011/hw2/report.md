@@ -1,7 +1,18 @@
 # HW2 Report
 
-I trained a YOLOv11 model to detect UNO (99% acc on dataset) and provides a demo that captures
-UNO cards from your screen.
+I trained a YOLOv11 model to detect UNO cards (99% acc on dataset) and provides a demo that detects
+UNO cards from the captured screen in real-time.
+
+![Demo Screenshot](../../../pics/hw2-demo.png)
+![Training result](../../../pics/hw2-train-results.png)
+
+- Thanks to [ultralytics YOLO](https://docs.ultralytics.com), I can train a YOLO model 
+and detect bounding boxes with just a few lines of code
+
+- The implementation of demo is based on `pillow` and `cv2`. Specifically,
+    - `PIL.ImageDraw`: drawing the bounding boxes with text on top of it
+    - `PIL.ImageGrab`: capturing screen(s) and storing the image in `PIL.Image.Image` format
+    - `cv2.imshow` and `cv2.waitKey(1)`: output the processed image to a window
 
 ## Dataset
 An annotated dataset [uno-cards (v3, aug416)](https://universe.roboflow.com/joseph-nelson/uno-cards)
@@ -115,6 +126,45 @@ names:
   13: "8"
   14: "9"
 ```
+
+### Demo
+
+- The color of bounding boxes is depended on the predicted class
+
+```python
+def set_colors(self, k: int) -> None:
+    self.colors = [f"#{color_hex:x}" for color_hex in random.sample(range(0xFFFFFF), k=k)]
+    print(self.colors)
+```
+
+- In order to render text above the detected bounding boxes, there're two steps
+
+    - compute the `text_anchor`: `text_anchor` is the top left corner of the displayed text,
+    and can be computed from the bounding box of the detected object
+    ```python
+    def get_textbox_anchor(bbox: BBox2D, text_y_offset: int) -> tuple[int, int]:
+        x0, y0 = bbox.top_left
+        return x0, y0 - text_y_offset
+    ```
+
+    - render text including a bounding box with background color
+    ```python
+    text_anchor = get_textbox_anchor(bbox, config.draw.text_y_offset)
+    textbbox = image_draw.textbbox(
+        text_anchor,
+        text=display_text,
+        font=config.draw.image_font,
+        stroke_width=config.draw.text_width,
+    )
+    image_draw.text(
+        text_anchor,
+        display_text,
+        font=config.draw.image_font,
+        stroke_width=config.draw.text_width,
+    )
+    ```
+
+
 
 
 

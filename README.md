@@ -1,5 +1,9 @@
 # How to use it
 
+- [Prerequisite](#prerequisite)
+- [HW1](#hw1)
+- [HW2](#hw2)
+
 ### Prerequisite
 - Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
@@ -16,6 +20,8 @@ def get_device() -> str:
         return "mps"
     return "cpu"
 ```
+
+---
 
 ### HW1
 
@@ -37,16 +43,43 @@ SGD
 uv run hw1 "hw1-sgd" 
 ```
 
+---
 
 ### HW2
 
 UNO card detection.
 
-[HW2 report]()
+[HW2 report](/src/pacsmv_501011/hw2/report.md).
 
-Thanks [uno-cards (v3, aug416)](https://universe.roboflow.com/joseph-nelson/uno-cards) for providing the data source with YOLOv11 format.
+- Thanks [uno-cards (v3, aug416)](https://universe.roboflow.com/joseph-nelson/uno-cards) for providing the data source with YOLOv11 format.
 
-First, download the dataset using `scripts/download_uno_cards.sh`.
+**The result can be reproduced but you need to manually set something**
+
+
+#### Dataset Preparation
+First, download the dataset using `scripts/download_uno_cards.sh`. 
+
+Then, inside of `data/uno-cards/data.yaml`, replace `names` field with these lines
+
+```yaml
+# Modified name mapping referenced from https://www.unorules.com/
+names:
+  0: "0"
+  1: "1"
+  2: "Wild Draw 4"
+  3: "Draw Two"
+  4: "Reverse"
+  5: "Skip"
+  6: "Wild"
+  7: "2"
+  8: "3"
+  9: "4"
+  10: "5"
+  11: "6"
+  12: "7"
+  13: "8"
+  14: "9"
+```
 
 #### Train YOLOv11
 
@@ -55,4 +88,24 @@ NOTE: Due to the [weird global setting](https://github.com/ultralytics/ultralyti
 
 ```bash
 YOLO_CONFIG_DIR="./configs" uv run hw2 train
+```
+
+You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. The `suffix` starts from 0 will increase every time you rerun the program
+
+#### Demo
+
+```bash
+uv run hw2 demo
+```
+
+- **The demo will capture your minitor with `(0, 0, 1920, 1080)` by default**
+- **Model checkpoint is totally depended on where you store it, by default it should be inside `yolo-runs/detect/uno-cards{suffix}/weights`**
+
+you can change it in `configs/hw2-demo.toml`:
+
+```toml
+...
+
+screen_capture_bbox = [your-preferred-capture-size]  # xyxy format: (x0, y0, x1, y1)
+model_ckpt = "path-to-your-checkpoint"
 ```

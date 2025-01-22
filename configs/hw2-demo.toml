@@ -1,0 +1,12 @@
+seed = 42
+screen_capture_bbox = [0, 0, 1920, 1080]  # (x0, y0, x1, y1)
+model_ckpt = "yolo-runs/detect/uno-cards/weights/best.pt"
+threshold = 0.7
+data_config = "data/uno-cards/data.yaml"
+
+[draw]
+bbox_width = 5
+text_width = 1
+text_y_offset = 15
+font = "configs/Arial.ttf"
+font_size = 20

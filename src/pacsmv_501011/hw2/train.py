@@ -37,7 +37,7 @@ class UNOConfig:
     hparams: HyperParams
 
 
-def train(config: UNOConfig):
+def uno_train(config: UNOConfig):
     model = YOLO(config.train.pretrained_weight)
 
     model.train(
