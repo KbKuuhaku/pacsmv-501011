@@ -109,8 +109,8 @@ Additionally, you can change these in `configs/hw2-demo.toml`:
 
 ```toml
 
-screen_capture_bbox = [your-preferred-capture-size]  # xyxy format: (x0, y0, x1, y1)
-model_ckpt = "path-to-your-checkpoint"
+screen_capture_bbox = [0, 0, 1920, 1080]  # (x0, y0, x1, y1)
+model_ckpt = "ckpts/best.pt"
 
 ```
 
