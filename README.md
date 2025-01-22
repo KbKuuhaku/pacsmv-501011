@@ -95,7 +95,7 @@ You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. The 
 #### Demo
 
 I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can try it if you want :)
-(the checkpoint should be stored in google drive but I'm a bit lazy)
+(the checkpoint should've been stored in google drive but I'm a bit lazy)
 
 ```bash
 uv run hw2 demo
@@ -111,3 +111,4 @@ Additionally, you can change these in `configs/hw2-demo.toml`:
 screen_capture_bbox = [your-preferred-capture-size]  # xyxy format: (x0, y0, x1, y1)
 model_ckpt = "path-to-your-checkpoint"
 ```
+
