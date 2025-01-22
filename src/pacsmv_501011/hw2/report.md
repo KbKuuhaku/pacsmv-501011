@@ -129,7 +129,7 @@ names:
 
 ### Demo
 
-- The color of bounding boxes is depended on the predicted class
+- The color of bounding boxes is depended on the predicted class. Randomly generate `k` colors at the start and indexing them by `label_id` later
 
 ```python
 def set_colors(self, k: int) -> None:
@@ -171,8 +171,3 @@ def set_colors(self, k: int) -> None:
         stroke_width=config.draw.text_width,
     )
     ```
-
-
-
-
-

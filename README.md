@@ -1,10 +1,11 @@
-# How to use it
-
 - [Prerequisite](#prerequisite)
 - [HW1](#hw1)
 - [HW2](#hw2)
+    - [Dataset Preparation](#dataset-preparation)
+    - [Train YOLOv11](#train-yolov11)
+    - [Demo](#demo)
 
-### Prerequisite
+## Prerequisite
 - Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 - Python 3.12. Install it using [uv](https://docs.astral.sh/uv/guides/install-python/) 
@@ -23,7 +24,7 @@ def get_device() -> str:
 
 ---
 
-### HW1
+## HW1
 
 Simple MLP trained on Fashion-MNIST.
 
@@ -45,7 +46,7 @@ uv run hw1 "hw1-sgd"
 
 ---
 
-### HW2
+## HW2
 
 UNO card detection.
 
@@ -56,7 +57,7 @@ UNO card detection.
 **The result can be reproduced but you need to manually set something**
 
 
-#### Dataset Preparation
+### Dataset Preparation
 First, download the dataset using `scripts/download_uno_cards.sh`. 
 
 Then, inside of `data/uno-cards/data.yaml`, replace `names` field with these lines
@@ -81,7 +82,7 @@ names:
   14: "9"
 ```
 
-#### Train YOLOv11
+### Train YOLOv11
 
 NOTE: Due to the [weird global setting](https://github.com/ultralytics/ultralytics/issues/1809) 
 (tldr: configurations have to be overridden before `ultralytics` gets imported), I have to manually set `YOLO_CONFIG_DIR="./configs/` to make it work.
@@ -90,9 +91,10 @@ NOTE: Due to the [weird global setting](https://github.com/ultralytics/ultralyti
 YOLO_CONFIG_DIR="./configs" uv run hw2 train
 ```
 
-You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. The `suffix` starts from 0 will increase every time you rerun the program
+You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. 
+The `suffix` starts from 0 and will increase every time you rerun the program
 
-#### Demo
+### Demo
 
 I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can try it if you want :)
 (the checkpoint should've been stored in google drive but I'm a bit lazy)
@@ -101,7 +103,7 @@ I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can 
 uv run hw2 demo
 ```
 
-- **The demo will capture your minitor with `(0, 0, 1920, 1080)` by default**
+**The demo will capture your minitor with `(0, 0, 1920, 1080)` by default**
 
 Additionally, you can change these in `configs/hw2-demo.toml`:
 
@@ -110,5 +112,6 @@ Additionally, you can change these in `configs/hw2-demo.toml`:
 
 screen_capture_bbox = [your-preferred-capture-size]  # xyxy format: (x0, y0, x1, y1)
 model_ckpt = "path-to-your-checkpoint"
+
 ```
 
