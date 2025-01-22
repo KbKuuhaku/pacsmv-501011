@@ -103,6 +103,8 @@ I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can 
 uv run hw2 demo
 ```
 
+Press q to quit.
+
 **The demo will capture your monitor with `(0, 0, 1920, 1080)` by default**
 
 Additionally, you can change these in `configs/hw2-demo.toml`:
