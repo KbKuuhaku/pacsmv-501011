@@ -94,14 +94,16 @@ You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. The 
 
 #### Demo
 
+I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can try it if you want :)
+(the checkpoint should be stored in google drive but I'm a bit lazy)
+
 ```bash
 uv run hw2 demo
 ```
 
 - **The demo will capture your minitor with `(0, 0, 1920, 1080)` by default**
-- **Model checkpoint is totally depended on where you store it, by default it should be inside `yolo-runs/detect/uno-cards{suffix}/weights`**
 
-you can change it in `configs/hw2-demo.toml`:
+Additionally, you can change these in `configs/hw2-demo.toml`:
 
 ```toml
 ...

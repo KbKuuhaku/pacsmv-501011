@@ -1,6 +1,6 @@
 seed = 42
 screen_capture_bbox = [0, 0, 1920, 1080]  # (x0, y0, x1, y1)
-model_ckpt = "yolo-runs/detect/uno-cards/weights/best.pt"
+model_ckpt = "ckpts/best.pt"
 threshold = 0.7
 data_config = "data/uno-cards/data.yaml"
 

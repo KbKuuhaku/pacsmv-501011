@@ -22,5 +22,4 @@ sessions/
 hello.py
 a.py
 pyrightconfig.json
-*.pt
-
+yolo11n.pt
