@@ -92,7 +92,7 @@ YOLO_CONFIG_DIR="./configs" uv run hw2 train
 ```
 
 You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. 
-The `suffix` starts from 0 and will increase every time you rerun the program
+The `suffix` starts from 0 and will increase every time you rerun the program.
 
 ### Demo
 
@@ -103,15 +103,15 @@ I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can 
 uv run hw2 demo
 ```
 
-**The demo will capture your minitor with `(0, 0, 1920, 1080)` by default**
+**The demo will capture your monitor with `(0, 0, 1920, 1080)` by default**
 
 Additionally, you can change these in `configs/hw2-demo.toml`:
 
 ```toml
 ...
 
-screen_capture_bbox = [your-preferred-capture-size]  # xyxy format: (x0, y0, x1, y1)
-model_ckpt = "path-to-your-checkpoint"
+screen_capture_bbox = [0, 0, 1920, 1080]  # (x0, y0, x1, y1)
+model_ckpt = "ckpts/best.pt"
 
 ```
 
