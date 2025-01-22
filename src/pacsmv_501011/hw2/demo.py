@@ -102,18 +102,20 @@ def draw_bbox(image: Image, box: Boxes, config: DetectConfig) -> None:
 
     # Text
     text_anchor = get_textbox_anchor(bbox, config.draw.text_y_offset)
+    # Get the coordinates of text box
     textbbox = image_draw.textbbox(
         text_anchor,
         text=display_text,
         font=config.draw.image_font,
         stroke_width=config.draw.text_width,
     )
+    # Render the text box
     image_draw.rectangle(
         textbbox,
         fill=color,
         width=config.draw.bbox_width,
     )
-
+    # Render the text
     image_draw.text(
         text_anchor,
         display_text,
