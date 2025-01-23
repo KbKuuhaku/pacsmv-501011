@@ -128,6 +128,7 @@ def uno_detect(config: DetectConfig) -> None:
     random.seed(config.seed)
 
     model = YOLO(config.model_ckpt)
+    print(model)
 
     while True:
         # Get screenshot
