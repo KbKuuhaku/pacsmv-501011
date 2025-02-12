@@ -19,7 +19,7 @@ from ..core.record import AccuracyRecord, LossRecord
 from ..core.train_state import TrainState
 from ..core.utils import get_device
 from ..dataset.mnist import MNIST, show_samples
-from ..model.mlp import MLP, MLPConfig
+from ..models.mlp import MLP, MLPConfig
 
 
 class OptimizerNotDefined(Exception): ...

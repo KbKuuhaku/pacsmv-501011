@@ -120,30 +120,4 @@ model_ckpt = "ckpts/best.pt"
 
 
 # HW3
-Ave Mujica LoRA (Stable Diffusion).
-
-[HW3 report](/src/pacsmv_501011/hw3/report.md).
-
-## [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 
-
-I've forked the project, added `uv.lock` for easy python environment management and saved my workflow files.
-
-If you want to reproduce the result:
-
-1. Start ComfyUI
-
-- Download the model checkpoint of [Illustrious-XL](https://civitai.com/models/795765/illustrious-xl), and put it in `comfy-ui/models/checkpoints/`
-
-- `cd comfy-ui`, run `uv run main.py`
-
-2. Train LoRA (optional)
-
-- Instal []
-
-- Install [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager?tab=readme-ov-file) (using method 1)
-
-- Load workflow `comfy-workflows/ave-mujica-train.json`
-
-3. Text-to-image Generation
-
-- Load workflow `comfy-workflows/ave-mujica-gen.json`
+[Diffusion Model](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) with Cross Attention, trained on MNIST. 
