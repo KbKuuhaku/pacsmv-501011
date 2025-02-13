@@ -1,0 +1,32 @@
+n_epoch = 20
+seed = 42
+batch_size = 64
+sigma = 25.0
+
+[data]
+root = "data/mnist"
+train_images = "train-images-idx3-ubyte"
+train_labels = "train-labels-idx1-ubyte"
+test_images = "t10k-images-idx3-ubyte"
+test_labels = "t10k-labels-idx1-ubyte"
+
+[hparam]
+lr = 2e-3
+beta1 = 0.9
+beta2 = 0.999
+
+[model]
+corpus_length = 10  # MNIST
+
+in_channels = 1
+out_channels = 1
+num_res_blocks = 2
+
+model_channels = 32
+channel_multipliers = [1, 2]  # multipliers on `model_channels` on each level
+attention_levels = [2]  # where the attention block should be added
+
+[model.transformer]
+context_dim = 256
+num_heads = 8
+num_layers = 1

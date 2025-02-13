@@ -35,4 +35,5 @@ build-backend = "setuptools.build_meta"
 [project.scripts]
 hw1 = "pacsmv_501011.hw1.main:main"
 hw2 = "pacsmv_501011.hw2.main:cli"
+hw3 = "pacsmv_501011.hw3.main:main"
 

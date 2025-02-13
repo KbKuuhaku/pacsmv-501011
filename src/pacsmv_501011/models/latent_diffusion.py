@@ -12,13 +12,13 @@ References: https://github.com/CompVis/stable-diffusion/blob/main/configs/stable
 
 
 @dataclass
-class LatentDiffusionConfig:
+class DiffusionConfig:
     vae: VAEConfig
     unet: UNetConfig
 
 
 class LatentDiffusion(nn.Module):
-    def __init__(self, config: LatentDiffusionConfig, *args, **kwargs) -> None:
+    def __init__(self, config: DiffusionConfig, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         self.vae = VAE(config.vae)
