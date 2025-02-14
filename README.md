@@ -3,9 +3,10 @@
 - [HW2](#hw2)
     - [Dataset Preparation](#dataset-preparation)
     - [Train YOLOv11](#train-yolov11)
-    - [Demo](#demo)
+    - [Demo](#hw2-demo)
 - [HW3](#hw3)
-    - [ComfyUI](#comfyui)
+    - [Train](#train)
+    - [Demo](#hw3-demo)
 
 ## Prerequisite
 - Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
@@ -96,7 +97,7 @@ YOLO_CONFIG_DIR="./configs" uv run hw2 train
 You can check the training results in `yolo-runs/detect/uno-cards{suffix}`. 
 The `suffix` starts from 0 and will increase every time you rerun the program.
 
-### Demo
+### HW2 Demo
 
 I've stored my checkpoint in `ckpts/best.pt` and uploaded it to github, you can try it if you want :)
 (the checkpoint should've been stored in google drive but I'm a bit lazy)
@@ -120,4 +121,18 @@ model_ckpt = "ckpts/best.pt"
 
 
 # HW3
-[Diffusion Model](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) with Cross Attention, trained on MNIST. 
+[Diffusion Model](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+
+## Train (optional)
+```bash
+uv run hw3 train
+```
+
+## HW3 Demo
+
+The checkpoint is stored in `ckpts/diffusion`. To use the demo, run
+```bash 
+uv run hw3 demo
+```
+
+

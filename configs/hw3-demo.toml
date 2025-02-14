@@ -1,0 +1,10 @@
+ckpt_dir = "ckpts/diffusion"
+sigma = 25.0
+digit_dir = "pics/digits"
+
+[sampler]
+image_size = 28
+batch_size = 64
+num_steps = 500
+eps = 1e-3
+

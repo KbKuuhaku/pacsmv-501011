@@ -1,8 +1,11 @@
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from pathlib import Path
+from typing import ClassVar, Self
 
 import torch
 import torch.nn as nn
 
+from ..core.config import parse_config
 from .spatial_transformer import SpatialTransformer, SpatialTransformerConfig
 from .unet_blocks.decoder import DecoderBlock
 from .unet_blocks.encoder import EncoderBlock
@@ -24,10 +27,18 @@ class UNetConfig:
     channel_multipliers: list[int]
     transformer: SpatialTransformerConfig
 
+    CKPT_NAME: ClassVar[str] = "weights.pt"
+    CONFIG_NAME: ClassVar[str] = "config.json"
+
+    @classmethod
+    def from_file(cls, ckpt_dir: str) -> Self:
+        ckpt_file = str(Path(ckpt_dir) / cls.CONFIG_NAME)
+        return parse_config(ckpt_file, cls)
+
 
 class UNet(nn.Module):
     """
-    U-Net
+    U-Net with Spatial Transformer and Time Embedding
     """
 
     def __init__(self, config: UNetConfig, *args, **kwargs) -> None:

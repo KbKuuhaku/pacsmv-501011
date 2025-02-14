@@ -1,4 +1,4 @@
-n_epoch = 20
+num_epochs = 30
 seed = 42
 batch_size = 64
 sigma = 25.0
@@ -11,7 +11,7 @@ test_images = "t10k-images-idx3-ubyte"
 test_labels = "t10k-labels-idx1-ubyte"
 
 [hparam]
-lr = 2e-3
+lr = 2e-4
 beta1 = 0.9
 beta2 = 0.999
 
