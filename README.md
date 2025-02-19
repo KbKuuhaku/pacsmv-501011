@@ -140,4 +140,4 @@ uv run hw3 demo
 
 ## HW4
 
-[Slide](https://docs.google.com/presentation/d/1y5ITzbQ6R93hikphjFesiYFyTkVRIaDsPMyhd54ln08/edit?usp=sharing)
+[Slide](./src/pacsmv_501011/hw4/drct.pdf)

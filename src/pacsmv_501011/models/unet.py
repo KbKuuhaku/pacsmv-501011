@@ -104,7 +104,6 @@ class UNet(nn.Module):
     def decode(self, x: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
         decoder_out = x
         for decoder_block in self.decoder:
-            # Skip connection on (B, C, H, W)
             decoder_out = decoder_block(decoder_out, self.encoder_hiddens.pop(), t)
 
         return decoder_out
