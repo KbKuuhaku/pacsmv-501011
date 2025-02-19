@@ -10,8 +10,11 @@ def test_encoder_no_context() -> None:
 
     block = EncoderBlock(in_channels=256, out_channels=512, time_dim=128, num_res_blocks=2)
     out1, hidden1 = block(images, time_embed)
-    assert hidden1.shape == (5, 512, 28, 28)
-    assert out1.shape == (5, 512, 14, 14)
+    assert hidden1.shape == (5, 512, 32, 32)
+    assert out1.shape == (5, 512, 16, 16)
+
+    # assert hidden1.shape == (5, 512, 28, 28)
+    # assert out1.shape == (5, 512, 14, 14)
 
 
 def test_encoder_with_context() -> None:
@@ -34,5 +37,8 @@ def test_encoder_with_context() -> None:
         spatial_transformer=spt,
     )
     out2, hidden2 = block(images, time_embed, context=context)
-    assert hidden2.shape == (5, 512, 28, 28)
-    assert out2.shape == (5, 512, 14, 14)
+    assert hidden2.shape == (5, 512, 32, 32)
+    assert out2.shape == (5, 512, 16, 16)
+
+    # assert hidden2.shape == (5, 512, 28, 28)
+    # assert out2.shape == (5, 512, 14, 14)

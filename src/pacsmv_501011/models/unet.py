@@ -77,6 +77,38 @@ class UNet(nn.Module):
             ),
         )
 
+    def forward(self, x: torch.Tensor, t: torch.Tensor, context: torch.Tensor) -> torch.Tensor:
+        t_embed = self.time_embed(t)
+        context_embed = self.context_embed(context)
+
+        encoder_out = self.encode(x, t_embed, context_embed)
+
+        mid_out = self.mid_block(encoder_out, t_embed, context_embed)
+
+        decoder_out = self.decode(mid_out, t_embed)
+
+        out = self.proj(decoder_out)
+
+        return out
+
+    def encode(self, x: torch.Tensor, t: torch.Tensor, context: torch.Tensor) -> torch.Tensor:
+        self.encoder_hiddens: list[torch.Tensor] = []
+
+        encoder_out = x
+        for encoder_block in self.encoder:
+            encoder_out, encoder_hidden = encoder_block(encoder_out, t, context)
+            self.encoder_hiddens.append(encoder_hidden)
+
+        return encoder_out
+
+    def decode(self, x: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+        decoder_out = x
+        for decoder_block in self.decoder:
+            # Skip connection on (B, C, H, W)
+            decoder_out = decoder_block(decoder_out, self.encoder_hiddens.pop(), t)
+
+        return decoder_out
+
     def _build_encoder(self, config: UNetConfig) -> nn.ModuleList:
         blocks = []
 
@@ -120,38 +152,6 @@ class UNet(nn.Module):
             in_channels = self.base_channels * channel_multiplier
 
         return nn.ModuleList(blocks)
-
-    def forward(self, x: torch.Tensor, t: torch.Tensor, context: torch.Tensor) -> torch.Tensor:
-        t_embed = self.time_embed(t)
-        context_embed = self.context_embed(context)
-
-        encoder_out = self.encode(x, t_embed, context_embed)
-
-        mid_out = self.mid_block(encoder_out, t_embed, context_embed)
-
-        decoder_out = self.decode(mid_out, t_embed)
-
-        out = self.proj(decoder_out)
-
-        return out
-
-    def encode(self, x: torch.Tensor, t: torch.Tensor, context: torch.Tensor) -> torch.Tensor:
-        self.encoder_hiddens: list[torch.Tensor] = []
-
-        encoder_out = x
-        for encoder_block in self.encoder:
-            encoder_out, encoder_hidden = encoder_block(encoder_out, t, context)
-            self.encoder_hiddens.append(encoder_hidden)
-
-        return encoder_out
-
-    def decode(self, x: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
-        decoder_out = x
-        for decoder_block in self.decoder:
-            # Skip connection on (B, C, H, W)
-            decoder_out = decoder_block(decoder_out, self.encoder_hiddens.pop(), t)
-
-        return decoder_out
 
 
 class TimeEmbedding(nn.Module):

@@ -41,5 +41,6 @@ def test_unet() -> None:
     context = (torch.ones(5, 1) * 4).long().cuda()
 
     out = model(images, t, context)
-    print(out)
-    assert out.shape != (5, 1, 128, 128)
+
+    # assert out.shape != (5, 1, 128, 128)
+    assert out.shape == (5, 1, 128, 128)
