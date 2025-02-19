@@ -123,6 +123,8 @@ model_ckpt = "ckpts/best.pt"
 # HW3
 [Diffusion Model](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 
+[HW3 report](/src/pacsmv_501011/hw3/report.md)
+
 ## Train (optional)
 ```bash
 uv run hw3 train
@@ -135,4 +137,6 @@ The checkpoint is stored in `ckpts/diffusion`. To use the demo, run
 uv run hw3 demo
 ```
 
+# HW4
 
+[Slide](https://docs.google.com/presentation/d/1y5ITzbQ6R93hikphjFesiYFyTkVRIaDsPMyhd54ln08/edit?usp=sharing)
