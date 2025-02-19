@@ -7,6 +7,7 @@
 - [HW3](#hw3)
     - [Train](#train)
     - [Demo](#hw3-demo)
+- [HW4](#hw4)
 
 ## Prerequisite
 - Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
@@ -120,23 +121,23 @@ model_ckpt = "ckpts/best.pt"
 ```
 
 
-# HW3
+## HW3
 [Diffusion Model](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 
 [HW3 report](/src/pacsmv_501011/hw3/report.md)
 
-## Train (optional)
+### Train (optional)
 ```bash
 uv run hw3 train
 ```
 
-## HW3 Demo
+### HW3 Demo
 
 The checkpoint is stored in `ckpts/diffusion`. To use the demo, run
 ```bash 
 uv run hw3 demo
 ```
 
-# HW4
+## HW4
 
 [Slide](https://docs.google.com/presentation/d/1y5ITzbQ6R93hikphjFesiYFyTkVRIaDsPMyhd54ln08/edit?usp=sharing)
